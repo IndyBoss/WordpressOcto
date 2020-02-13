@@ -1,6 +1,16 @@
 .del {
   background-color: red !important;
 }
+
 .del:hover {
   background-color: #890016 !important;
+}
+
+#overzichtMap {
+  height: 180px;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
 }

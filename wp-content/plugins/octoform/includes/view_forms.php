@@ -53,21 +53,7 @@ function view_forms( $atts ) {
 			$result = $result . "<tr><td>#</td><td>Nog niet van toepassing</td><td>........</td><td>........</td><td>........</td></tr>";
 		} else {$result = $result . "<tr><td>#</td><td>Nog niet van toepassing</td><td>........</td><td>........</td></tr>";}
 	}
-  $result = $result ."</table>";
-
-	$result = $result . "<script>
-
-	var map = L.map('map').setView([51.505, -0.09], 13);
-
-	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	    attribution: '&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors'
-		}).addTo(map);
-
-	L.marker([51.5, -0.09]).addTo(map)
-	    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-	    .openPopup();
-
-		</script>";
+  $result = $result ."</table>" . get_full_map() . get_lat_lng('kazernelaan 9 2550 kontich')['lat'].'<br>'.get_lat_lng('kazernelaan 9 2550 kontich')['long'];
 
 	return $result;
 }
