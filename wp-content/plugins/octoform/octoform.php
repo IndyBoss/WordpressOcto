@@ -18,3 +18,6 @@ foreach (glob($dir . "includes/components/*.php") as $filename) {
 
 wp_register_style('Octoform_style', '/'.$dir.'includes/css/octoform.css');
 wp_enqueue_style( 'Octoform_style');
+wp_register_style('leaflet_style', '/'.$dir.'assets/leaflet/leaflet.css');
+wp_enqueue_style( 'leaflet_style');
+wp_enqueue_script( 'leaflet_js', '/'.$dir.'assets/leaflet/leaflet.js');

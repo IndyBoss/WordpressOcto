@@ -35,7 +35,7 @@ function get_form_question_buttons($questions_url, $form_id, $view_url) {
       <input type="hidden" name="method" value="delete">
       <input type="hidden" name="form_id" value="'.$form_id.'">
       <input type="hidden" name="alert" value="Formulier verwijderd.">
-      <input type="submit" class="delete" value="Verwijder formulier">
+      <input type="submit" class="del" value="Verwijder formulier">
     </form>
   </div>';
 

@@ -1,7 +1,7 @@
 <?php
 
 function popup($a) {
-  $result = '<button type="submit" class="open-button" onclick="openForm()" style="">Formulier toevoegen</button>
+  $result = '<button type="submit" id="dropBtn" onclick="openForm()">Formulier toevoegen +</button>
 
   <div class="form-popup" id="myForm" style="display: none;z-index: 9;padding: 15px;background-color:#f5F5F5;">
     <form action="/'. $a .'" method="post">
@@ -16,8 +16,10 @@ function popup($a) {
     function openForm() {
       if (document.getElementById("myForm").style.display == "block") {
         document.getElementById("myForm").style.display = "none";
+        document.getElementById("dropBtn").innerHTML = "Formulier toevoegen +";
       } else {
         document.getElementById("myForm").style.display = "block";
+        document.getElementById("dropBtn").innerHTML = "Formulier toevoegen - ";
       }
     }
   </script>';
