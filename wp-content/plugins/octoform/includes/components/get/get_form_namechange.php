@@ -3,7 +3,7 @@
 function get_form_namechange($g, $questions_url, $name, $view_url) {
   $result = get_form_question_buttons($questions_url, $_POST['form_id'], $view_url) .
   '<form action="" method="post">
-    <label for="name"><b>Formulier naam</b></label>
+    <label for="naam"><b>Formulier naam</b></label>
     <input type="text" placeholder="Naam" name="naam" value="'.$name.'" required>
     '.get_admin_groups($g).'
 

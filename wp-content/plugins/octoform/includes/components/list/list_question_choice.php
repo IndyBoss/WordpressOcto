@@ -2,7 +2,7 @@
 
 function list_question_choice($a) {
   $result = '<form action="/'. $a .'" method="post">
-              <label for="name"><b>Vraag</b></label>
+              <label for="question"><b>Vraag</b></label>
               <input type="text" placeholder="Vraag" name="question" required><br>';
 
   for ($i=1; $i < 16; $i++) {

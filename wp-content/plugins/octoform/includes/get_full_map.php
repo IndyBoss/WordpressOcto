@@ -1,7 +1,7 @@
 <?php
 function get_full_map() {
   global $wpdb;
-  
+
   $result = "<div id='map' style='width: 1000px; height: 500px; border: 1px solid #AAA;'></div>
 	<script>
 		var map = L.map( 'map', {

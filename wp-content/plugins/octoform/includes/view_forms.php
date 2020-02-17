@@ -18,7 +18,6 @@ function view_forms( $atts ) {
 			} catch (Exception $e) {
 				return 'Error! '. $wpdb->last_error;
 	    }
-
 		}
 	}
 
@@ -53,7 +52,7 @@ function view_forms( $atts ) {
 			$result = $result . "<tr><td>#</td><td>Nog niet van toepassing</td><td>........</td><td>........</td><td>........</td></tr>";
 		} else {$result = $result . "<tr><td>#</td><td>Nog niet van toepassing</td><td>........</td><td>........</td></tr>";}
 	}
-  $result = $result ."</table>" . get_full_map() . get_lat_lng('kazernelaan 9 2550 kontich')['lat'].'<br>'.get_lat_lng('kazernelaan 9 2550 kontich')['long'];
+  $result = $result ."</table>" . get_full_map();
 
 	return $result;
 }

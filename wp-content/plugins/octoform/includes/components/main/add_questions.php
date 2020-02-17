@@ -37,16 +37,16 @@ function add_questions( $atts ) {
                         </form><br><br>';
     switch ($_POST['qtype']) {
       case 0:
-        $result = $result . update_question_choice($add_url, $view_url);
+        $result = $result . update_question_choice($add_url, $_POST['question_id']);
         break;
       case 1:
-        $result = $result . update_question_multiple($add_url, $view_url);
+        $result = $result . update_question_multiple($add_url, $_POST['question_id']);
         break;
       case 2:
-        $result = $result . update_question_open($add_url, $view_url);
+        $result = $result . update_question_open($add_url, $_POST['question_id']);
         break;
       case 3:
-        $result = $result . update_question_location($add_url, $view_url);
+        $result = $result . update_question_location($add_url, $_POST['question_id']);
         break;
       default:
         $result = $result . '<H1>ERROR 400</h1><h2>Woops, ga naar de hoofdpagina en probeer opnieuw.</h2>';
