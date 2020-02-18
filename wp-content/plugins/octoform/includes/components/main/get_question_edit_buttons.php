@@ -1,6 +1,6 @@
 <?php
 
-function get_question_edit_buttons($questions_url, $add_url, $form_id, $question_id, $question, $question_type, $update) {
+function get_question_edit_buttons($questions_url, $add_url, $form_id, $question_id, $question, $question_type, $update, $counter) {
   $result = '<br><br>
   <div style="
   display:grid;
@@ -10,7 +10,7 @@ function get_question_edit_buttons($questions_url, $add_url, $form_id, $question
   grid-template-rows:auto;
   ">';
 
-  $result = $result . '
+  $result .= '
   <form action="/'. $questions_url .'" method="post">
     <input type="hidden" name="method" value="qupdate">
     <input type="hidden" name="question_id" value="'.$question_id.'">
@@ -29,7 +29,7 @@ function get_question_edit_buttons($questions_url, $add_url, $form_id, $question
     <input type="submit" class="del" value="&#10006;" style="font-size:20px; height:30px; width:30px; padding:0px;">
   </form>';
 
-  $result = $result . '<h5 style="margin-bottom:0;">'. $question .'</h5></div>';
+  $result .= '<h5 style="margin-bottom:0;">'. $counter . '. ' . $question .'</h5></div>';
 
   return $result;
 }

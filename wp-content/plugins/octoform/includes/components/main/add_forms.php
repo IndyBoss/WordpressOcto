@@ -11,7 +11,7 @@ function add_form( $atts ) {
 
 
   // ALERTS ON PAGE
-  $result = $result . get_alerts();
+  $result .= get_alerts();
 
   // ADDING AND EDITING FORM
   if (isset($_POST['method'])) {
@@ -20,9 +20,10 @@ function add_form( $atts ) {
       $wpdb->insert('wp_forms', array(
         'name' => $_POST['naam'],
         'group_id' => $gid,
-        'data_id' => ''
+        'data_id' => '',
+        'link' => uniqid()
       ));
-      $result = $result . get_form_question_buttons($questions_url, get_form_id(), $view_url) . '<form action="/'.$add_url.'" method="post">
+      $result .= get_form_question_buttons($questions_url, get_form_id(), $view_url) . '<form action="/'.$add_url.'" method="post">
                             <label for="naam"><b>Formulier naam</b></label>
                             <input type="text" placeholder="Naam" name="naam" value="'.$_POST['naam'].'" required>
                             '.get_admin_groups($form_gid).'
@@ -32,13 +33,13 @@ function add_form( $atts ) {
                             <input type="hidden" name="alert" value="wijzigingen opgeslagen.">
                             <input type="submit" name="submit" value="Sla wijzigingen op">
                           </form>';
-      $result = $result . get_form_questions($add_url,  get_form_id(), $questions_url);
+      $result .= get_form_questions($add_url,  get_form_id(), $questions_url);
     }
     if ($_POST['method'] == 'update') {
       if (isset($_POST['group'])) {$wpdb->update('wp_forms', array('name'=> $_POST['naam'], 'group_id'=>$_POST['group']), array('id'=> $_POST['form_id']));}
       $wpdb->update('wp_forms', array('name'=> $_POST['naam']), array('id'=> $_POST['form_id']));
       $result = $result. get_form_namechange(get_created_form_group_id(), $questions_url, $_POST['naam'], $view_url);
-      $result = $result . get_form_questions($add_url,  $_POST['form_id'], $questions_url);
+      $result .= get_form_questions($add_url,  $_POST['form_id'], $questions_url);
     }
     if ($_POST['method'] == 'qadd') {
       $text = '';
@@ -99,7 +100,7 @@ function add_form( $atts ) {
           break;
       }
       $result = $result. get_form_namechange($form_gid, $questions_url, $_POST['naam'], $view_url);
-      $result = $result . get_form_questions($add_url,  $_POST['form_id'], $questions_url);
+      $result .= get_form_questions($add_url,  $_POST['form_id'], $questions_url);
     }
     if ($_POST['method'] == 'qupdate') {
       $text = '';
@@ -155,21 +156,29 @@ function add_form( $atts ) {
             'form_id' => $_POST['form_id']
           ), array('id'=> $_POST['question_id']));
           break;
+        case 4:
+          $wpdb->update('wp_forms', array(
+            'name' => $_POST['naam'],
+            'group_id' => $gid,
+            'data_id' => '',
+            'intro' => $_POST['intro']
+          ), array('id'=> $_POST['form_id']));
+          break;
         default:
           "Er liep iets mis.";
           break;
       }
       $result = $result. get_form_namechange(get_created_form_group_id(), $questions_url, $_POST['naam'], $view_url);
-      $result = $result . get_form_questions($add_url,  $_POST['form_id'], $questions_url);
+      $result .= get_form_questions($add_url,  $_POST['form_id'], $questions_url);
     }
     if ($_POST['method'] == 'qdelete') {
       $wpdb->delete( 'wp_question', array( 'id' => $_POST['question_id'] ) );
       $result = $result. get_form_namechange($form_gid, $questions_url, $_POST['naam'], $view_url);
-      $result = $result . get_form_questions($add_url,  $_POST['form_id'], $questions_url);
+      $result .= get_form_questions($add_url,  $_POST['form_id'], $questions_url);
     }
   } elseif (isset($_POST['form_id'])) {
       $conn = $wpdb->get_results("SELECT group_id, name FROM wp_forms WHERE ID = ". $_POST['form_id'] );
-      $result = $result . get_form_question_buttons($questions_url, $_POST['form_id'], $view_url) . '<form action="/'.$add_url.'" method="post">
+      $result .= get_form_question_buttons($questions_url, $_POST['form_id'], $view_url) . '<form action="/'.$add_url.'" method="post">
                             <label for="naam"><b>Formulier naam</b></label>
                             <input type="text" placeholder="Naam" name="naam" value="'.$conn[0]->name.'" required>
                             '. get_admin_groups($conn[0]->group_id) .'
@@ -179,7 +188,7 @@ function add_form( $atts ) {
                             <input type="hidden" name="alert" value="wijzigingen opgeslagen.">
                             <input type="submit" name="submit" value="Sla wijzigingen op">
                           </form>';
-      $result = $result . get_form_questions($add_url,  $_POST['form_id'], $questions_url);
+      $result .= get_form_questions($add_url,  $_POST['form_id'], $questions_url);
   }
 
   return $result;

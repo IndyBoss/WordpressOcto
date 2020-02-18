@@ -32,7 +32,7 @@ function get_full_map() {
 		}
 
 		foreach ($conn as $c) {
-			$result = $result . "
+			$result .= "
 			var popup = '<b>' + '". $c->name ."' + '</b>'+
 		              '<br/>' + '". $c->location ."' +
 		              '<br/><b>Beschrijving:</b> ' + '". $c->description ."';
@@ -43,7 +43,7 @@ function get_full_map() {
 		  markerClusters.addLayer( m );";
 		}
 
-		$result = $result . "map.addLayer( markerClusters );
+		$result .= "map.addLayer( markerClusters );
 	</script>";
 
   return $result;

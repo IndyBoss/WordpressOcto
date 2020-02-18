@@ -1,13 +1,14 @@
 <?php
 function view_forms( $atts ) {
-	$a = shortcode_atts( array('add_url'=>'#'), $atts );
+	$a = shortcode_atts( array('add_url'=>'#', 'questionaire_url'=>'#'), $atts );
 	$add_url = esc_attr($a['add_url']);
+	$questionaire_url = esc_attr($a['questionaire_url']);
 	$data_url = '#';
   $g_id = get_groupid();
 	global $wpdb;
 	$result = '';
 
-	$result = $result . get_alerts();
+	$result .= get_alerts();
 
 	if (isset($_POST['method'])) {
 		if ($_POST['method'] == 'delete') {
@@ -22,8 +23,8 @@ function view_forms( $atts ) {
 	}
 
 	if (current_user_can('administrator')) {
-		$result = $result . popup($add_url, $view_url). "<table><tr><th>ID</th><th>Naam</th><th>Group</th><th>Link</th><th>Acties</th></tr>";
-	} else {$result = $result . popup($add_url, $view_url). "<table><tr><th>ID</th><th>Naam</th><th>Link</th><th>Acties</th></tr>";}
+		$result .= popup($add_url, $view_url)."<table><tr><th>ID</th><th>Naam</th><th>Group</th><th>Link</th><th>Acties</th></tr>";
+	} else {$result .= popup($add_url, $view_url). "<table><tr><th>ID</th><th>Naam</th><th>Link</th><th>Acties</th></tr>";}
 
   if ($g_id != 1) {
     $conn = $wpdb->get_results("SELECT * FROM wp_forms WHERE group_id = ". $g_id );
@@ -31,9 +32,10 @@ function view_forms( $atts ) {
 
 	if (!empty($conn[0]->ID)) {
 		foreach ($conn as $c) {
-	    $result = $result . "<tr><td>".$c->ID."</td><td>".$c->name."</td>";
-			if (current_user_can('administrator')) {$result = $result . "<td>".get_group_name($c->group_id)."</td>";}
-			$result = $result ."<td><a href='#'>Link</a></td><td>".
+	    $result .= "<tr><td>".$c->ID."</td><td>".$c->name."</td>";
+			if (current_user_can('administrator')) {$result .= "<td>".get_group_name($c->group_id)."</td>";}
+			//<a href='/".$questionaire_url."?q=".$c->link."' target='_blank' >Link</a>
+			$result .="<td><a href='#' target='_blank' >Link</a></td><td>".
 								'<div style="display: grid;grid-column-gap: 10px;justify-content: left;grid-template-columns: auto auto;grid-template-rows: auto;">
 								<form action="/'.$add_url.'" method="post">
 		              <input type="hidden" name="form_id" value="'.$c->ID.'">
@@ -49,10 +51,10 @@ function view_forms( $atts ) {
 		}
 	} else {
 		if (current_user_can('administrator')) {
-			$result = $result . "<tr><td>#</td><td>Nog niet van toepassing</td><td>........</td><td>........</td><td>........</td></tr>";
-		} else {$result = $result . "<tr><td>#</td><td>Nog niet van toepassing</td><td>........</td><td>........</td></tr>";}
+			$result .= "<tr><td>#</td><td>Nog niet van toepassing</td><td>........</td><td>........</td><td>........</td></tr>";
+		} else {$result .= "<tr><td>#</td><td>Nog niet van toepassing</td><td>........</td><td>........</td></tr>";}
 	}
-  $result = $result ."</table>" . get_full_map();
+  $result .="</table>" . get_full_map();
 
 	return $result;
 }

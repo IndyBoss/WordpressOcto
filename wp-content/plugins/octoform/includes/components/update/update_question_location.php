@@ -10,10 +10,10 @@ function update_question_location($a, $qid) {
               <input type="text" placeholder="Vraag" name="question"';
 
   if (isset($conn[0]->question)) {
-    $result = $result . 'value="'.$conn[0]->question.'"';
+    $result .= 'value="'.$conn[0]->question.'"';
   }
 
-  $result = $result . ' required><br>
+  $result .= ' required><br>
               <input type="hidden" name="question_id" value="'.$qid.'">
               <input type="hidden" name="form_id" value="'.$_POST['form_id'].'">
               <input type="hidden" name="naam" value="'.$_POST['naam'].'">
