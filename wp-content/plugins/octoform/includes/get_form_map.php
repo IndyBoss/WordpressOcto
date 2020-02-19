@@ -1,5 +1,5 @@
 <?php
-function get_full_map() {
+function get_form_map() {
   global $wpdb;
 
   $result = "<div id='map' style='width: 1000px; height: 500px; border: 1px solid #AAA;'></div>
@@ -25,21 +25,13 @@ function get_full_map() {
 
 		var markerClusters = L.markerClusterGroup();";
 
-		if (current_user_can('administrator')) {
-			$conn = $wpdb->get_results("SELECT * FROM wp_markers");
-		} else {
-			$conn = $wpdb->get_results("SELECT * FROM wp_markers WHERE group_id=" . get_groupid());
-      $l = '';
-		}
+    $conn = $wpdb->get_results("SELECT * FROM wp_markers WHERE form_id=" . $_POST['form_id']);
 
 		foreach ($conn as $c) {
-      if (current_user_can('administrator')) {
-        $l = '<br><br><form action="" method="post"><input type="hidden" name="method" value="mdelete"><input type="hidden" name="marker_id" value="'.$c->ID.'"><input type="submit" value="Verwijder" class="del"></form>';
-      }
 			$result .= "
 			var popup = '<b>' + '". $c->name ."' + '</b>'+
-		              '<br>' + '". $c->location ."' +
-		              '<br><br><b>Beschrijving:</b> ' + '". $c->description ."' + '". $l ."';
+		              '<br/>' + '". $c->location ."' +
+		              '<br/><b>Beschrijving:</b> ' + '". $c->description ."';
 
 		  var m = L.marker( [". $c->lat .", ". $c->lng ."], {icon: myIcon} )
 		                  .bindPopup( popup );

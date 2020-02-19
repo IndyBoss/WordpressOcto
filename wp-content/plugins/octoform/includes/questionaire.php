@@ -8,7 +8,7 @@ function questionaire_show( $atts ) {
     $conn = $wpdb->get_results("SELECT * FROM `wp_question` WHERE form_id=" . $f[0]->ID);
     $q = 1;
 
-    $result = '<h1>'.$f[0]->name.'</h1><br><h3>Intro</h3>';
+    $result = '<div><h1>'.$f[0]->name.'</h1><br><h3>Intro</h3>';
 
     $resultArray = explode("\n", $f[0]->intro);
     foreach ($resultArray as $r) {

@@ -12,7 +12,8 @@ function questionaire_send() {
         }
         $wpdb->insert('wp_question_results_choice', array(
           'answer' => $text,
-          'question_id' => $c->ID
+          'question_id' => $c->ID,
+          'form_id' => $_POST['form_id']
         ));
         break;
       case 1:
@@ -22,15 +23,18 @@ function questionaire_send() {
             $text .= '|'.$_POST['question_'.$q.'_'.$i];
           }
         }
-        $wpdb->insert('wp_question_results_choice', array(
+        $wpdb->insert('wp_question_results_multiple', array(
           'answer' => $text,
-          'question_id' => $c->ID
+          'question_id' => $c->ID,
+          'form_id' => $_POST['form_id']
         ));
         break;
       case 2:
-        $wpdb->insert('wp_question_results_choice', array(
+      $result .= '';
+        $wpdb->insert('wp_question_results_open', array(
           'answer' => $_POST['question_'.$q],
-          'question_id' => $c->ID
+          'question_id' => $c->ID,
+          'form_id' => $_POST['form_id']
         ));
         break;
       case 3:
