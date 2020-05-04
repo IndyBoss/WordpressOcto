@@ -1,7 +1,7 @@
 # Octoform plugin
 
 ## Installatie
-Download de [Octoform zip](https://github.com/IndyBoss/WordpressOcto/blob/master/wp-content/plugins/octoform.zip) folder en voeg deze toe als plugin aan de Wordpress website.
+Download de [Octoform zip](https://github.com/IndyBoss/WordpressOcto/raw/master/wp-content/plugins/octoform.zip) folder en voeg deze toe als plugin aan de Wordpress website.
 
 ## Gebruik
 Voor elke pagina kan je de volgende shortcode's gebruiken.
@@ -18,6 +18,7 @@ Elke pagina moet een paar pagina namen meekrijgen om de links te laten werken.
     * data_url: De formulier resultaten overzicht pagina.
 
 
+
   * De pagina waar de formulieren worden bewerkt (Wordpress Page: **formulier**)
     * _[addform add_url="**formulier**" questions_url="**vraag**" view_url="**overzicht**"]_
     * add_url: De naam van de pagina zelf om terug te linken na een wijziging.
@@ -25,18 +26,22 @@ Elke pagina moet een paar pagina namen meekrijgen om de links te laten werken.
     * view_url: De naam van de overzicht pagina waar alle formulieren van die groep getoond worden.
 
 
+
   * De pagina die je questionaire inzending verifieerd (Wordpress Page: **verstuurd**)
     * _[questionaire_send]_
+
 
 
   * De formulier resultaten overzicht pagina (Wordpress Page: **data**)
     * _[data]_
 
 
+
   * De pagina waar de vragen worden bewerkt (Wordpress Page: **vraag**)
     * _[addquestions add_url="**formulier**" questions_url="**vraag**"]_
     * add_url: De naam van de pagina zelf om terug te linken na een wijziging.
     * questions_url: De naam van de pagina waar de vragen worden bewerkt.
+
 
 
   * De pagina waar je de questionaire kan beantwoorden (Wordpress Page: **vragenlijst**)
