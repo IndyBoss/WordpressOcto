@@ -6,6 +6,7 @@ Download de [Octoform zip](https://github.com/IndyBoss/WordpressOcto/blob/master
 ## Gebruik
 Voor elke pagina kan je de volgende shortcode's gebruiken.
 Elke pagina moet een paar pagina namen meekrijgen om de links te laten werken.
+
 **De pagina namen moeten exact overeen komen met de namen van de links van de Wordpress Pages waar je deze shortcodes op gaat gebruiken**
 
 **Het eerste gedeelte van de shortcode is enkel de naam van de functie, dit moet niet aangepast worden!**
