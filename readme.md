@@ -18,10 +18,10 @@ Elke pagina moet een paar pagina namen meekrijgen om de links te laten werken.
 
 
   * De pagina waar de formulieren worden bewerkt (Wordpress Page: **formulier**)
-     * _[addform add_url="**formulier**" questions_url="**vraag**" view_url="**overzicht**"]_
-     * add_url: De naam van de pagina zelf om terug te linken na een wijziging.
-     * questions_url: De naam van de pagina waar de vragen worden bewerkt.
-     * view_url: De naam van de overzicht pagina waar alle formulieren van die groep getoond worden.
+    * _[addform add_url="**formulier**" questions_url="**vraag**" view_url="**overzicht**"]_
+    * add_url: De naam van de pagina zelf om terug te linken na een wijziging.
+    * questions_url: De naam van de pagina waar de vragen worden bewerkt.
+    * view_url: De naam van de overzicht pagina waar alle formulieren van die groep getoond worden.
 
 
   * De pagina die je questionaire inzending verifieerd (Wordpress Page: **verstuurd**)
