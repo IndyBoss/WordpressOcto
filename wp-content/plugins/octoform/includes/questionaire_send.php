@@ -31,8 +31,9 @@ function questionaire_send() {
         break;
       case 2:
       $result .= '';
+      $text = $_POST['question_'.$q];
         $wpdb->insert('wp_question_results_open', array(
-          'answer' => $_POST['question_'.$q],
+          'answer' => $text,
           'question_id' => $c->ID,
           'form_id' => $_POST['form_id']
         ));
